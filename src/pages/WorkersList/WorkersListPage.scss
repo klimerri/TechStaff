@@ -1,0 +1,52 @@
+.workers-list {
+    &__page {
+        display: flex;
+    }
+
+
+    &__container {
+        display: flex;
+        flex-direction: column;
+        padding: 30px 20px;
+        width: 80%;
+        
+    }
+
+    &__header {
+        font-family: "Ubuntu", sans-serif;
+        font-weight: 400;
+        font-style: normal;
+        color: #1849dc;
+        font-size: 35px;
+    }
+
+    &__list {
+        width: 100%;
+        margin-top: 30px;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+
+        &__header {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 10px;
+            margin-bottom: 15px;
+            
+
+            &__name {
+                display: flex;
+                flex-direction: column;
+                gap: 3px;
+            }
+
+            &-text {
+                font-family: "Ubuntu", sans-serif;
+                font-weight: 400;
+                font-style: normal;
+                color: #1849dc;
+                font-size: 18px;
+            }
+        }
+    }
+}
