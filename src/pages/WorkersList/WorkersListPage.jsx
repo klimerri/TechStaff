@@ -4,9 +4,6 @@ import { WorkerCard } from "../../components/WorkerCard/WorkerCard";
 
 export const WorkersList = () => {
   return (
-    <div className="workers-list__page">
-      <Drawer />
-
       <div className="workers-list__container">
         <span className="workers-list__header">Список сотрудников</span>
 
@@ -30,6 +27,5 @@ export const WorkersList = () => {
           <WorkerCard />
         </div>
       </div>
-    </div>
   );
 };
