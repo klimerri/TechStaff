@@ -16,8 +16,8 @@ function App() {
 
           <Route path="/" element={<LayoutWithDrawer />}>
             <Route path="/calendar" element={<Calendar />} />
-            <Route path="/workers-list" element={<WorkersList />} />
-            <Route path="/worker-page" element={<Worker />} />
+            <Route path="/workers" element={<WorkersList />} />
+            <Route path="/worker" element={<Worker />} />
           </Route>
         </Routes>
       </BrowserRouter>
