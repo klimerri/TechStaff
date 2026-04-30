@@ -1,0 +1,111 @@
+.requests-details {
+    &__container {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__header {
+        font-family: "Ubuntu", sans-serif;
+        font-size: 18px;
+        font-weight: 400;
+        color: #1849dc;
+    }
+
+    &__client {
+       font-family: "Ubuntu", sans-serif;
+        font-size: 16px;
+        font-weight: 500;
+        color: black; 
+        margin-top: 10px;
+
+        &-detail {
+            display: flex;
+            gap: 20px;
+            margin-top: 30px;
+
+            &__card {
+                display: flex;
+                flex-direction: column;
+                gap: 5px;
+                border-radius: 15px;
+                background-color: #eff0f4;
+                box-sizing: border-box;
+                padding: 15px 20px;
+
+                &-title {
+                    font-family: "Ubuntu", sans-serif;
+                    font-size: 16px;
+                    font-weight: 400;
+                    color: black; 
+                }
+
+                &-text {
+                   font-family: "Ubuntu", sans-serif;
+                    font-size: 18px;
+                    font-weight: 500;
+                    color: #1849dc; 
+                }
+            }
+        }
+    }
+
+    &__title, &__description {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 30px;
+
+        &-header {
+            font-family: "Ubuntu", sans-serif;
+            font-size: 18px;
+            font-weight: 500;
+            color: black;
+        }
+
+        &-text {
+           font-family: "Ubuntu", sans-serif;
+            font-size: 16px;
+            font-weight: 400;
+            color: black; 
+        }
+    }
+
+    &__ticket {
+        display: flex;
+        gap: 10px;
+        margin-top: 30px;
+
+        &-header {
+            font-family: "Ubuntu", sans-serif;
+            font-size: 18px;
+            font-weight: 500;
+            color: black;
+        }
+
+        &-text {
+           font-family: "Ubuntu", sans-serif;
+            font-size: 18px;
+            font-weight: 500;
+            color: #1849dc; 
+        }
+    }
+
+    &__button {
+        background-color: #1849dc; 
+        font-family: "Ubuntu", sans-serif;
+        font-size: 18px;
+        font-weight: 500;
+        color: white;
+        width: max-content;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 20px;
+        margin-top: 40px;
+        cursor: pointer;
+        transition: background-color 0.3s linear;
+
+        &:hover {
+            background-color: #122f86;
+        }
+    }
+}

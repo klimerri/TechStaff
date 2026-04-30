@@ -12,7 +12,7 @@ export const Requests = () => {
                 <div className="requests__list">
                     <RequestsList />
                 </div>
-                <div className="reqiests__detail">
+                <div className="requests__detail">
                     <RequestsDetails />
                 </div> 
             </div>
