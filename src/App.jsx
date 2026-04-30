@@ -6,6 +6,7 @@ import { Worker } from './pages/Worker/Worker';
 import { Ticket } from './pages/Ticket/Ticket';
 import { LayoutWithDrawer } from './components/LayoutWithDrawer/LayoutWithDrawer';
 import { BrowserRouter, Route, Routes} from 'react-router-dom';
+import { Requests } from './pages/Requests/Requests';
 
 function App() {
 
@@ -20,6 +21,7 @@ function App() {
             <Route path="/workers" element={<WorkersList />} />
             <Route path="/worker" element={<Worker />} />
             <Route path="/ticket" element={<Ticket />} />
+            <Route path="/requests" element={<Requests />} />
           </Route>
         </Routes>
       </BrowserRouter>

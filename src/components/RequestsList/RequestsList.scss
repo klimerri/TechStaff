@@ -1,0 +1,27 @@
+.requests-list {
+    &__container {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__header {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+        margin-bottom: 15px;
+
+        &-name, &-client, &-date {
+            font-family: "Ubuntu", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+            color: black;
+            font-size: 15px;
+        }
+    }
+    
+    &__list {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+}
