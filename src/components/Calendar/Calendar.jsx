@@ -7,8 +7,10 @@ const events = [{ title: 'Событие', start: new Date(), end: new Date(Date
 
 const EngineerEvent = ({ event }) => (
     <>
-        <span>{event.title} </span>
-        <span>({event.engineer})</span>
+        <span>{event.title} </span> <br />
+        <span>{event.engineer}</span> <br />  
+        <span>{event.start.toLocaleString()}</span> <br />
+        <span>{event.end.toLocaleString()}</span>
     </>
   
 );

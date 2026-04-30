@@ -1,11 +1,11 @@
 import "./RequestCard.scss";
 
-export const RequestCard = () => {
+export const RequestCard = ({id, client, date}) => {
     return (
         <div className="request-card__container">
-            <span className="request-card__name">№12345678</span>
-            <span className="request-card__client">ООО "Конфетки"</span>
-            <span className="request-card__date">12.12.2025</span>
+            <span className="request-card__name">{id}</span>
+            <span className="request-card__client">{client.name}</span>
+            <span className="request-card__date">{date}</span>
         </div>
     )
 }

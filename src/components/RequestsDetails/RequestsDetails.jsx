@@ -1,6 +1,10 @@
 import "./RequestsDetails.scss";
 
-export const RequestsDetails = () => {
+export const RequestsDetails = ({ onCreateRequest }) => {
+    const handleCreateRequest = () => {
+        onCreateRequest();
+    }
+
     return (
         <div className="requests-details__container">
             <div className="requests-details__header">Обращение №12345678</div>
@@ -36,7 +40,7 @@ export const RequestsDetails = () => {
                 <span className="requests-details__ticket-text">Не создана</span>
             </div>
 
-            <button className="requests-details__button">Создать заявку</button>
+            <button className="requests-details__button" onClick={handleCreateRequest}>Создать заявку</button>
         </div>
     )
 }

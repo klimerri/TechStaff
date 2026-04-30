@@ -1,9 +1,15 @@
 import "./Requests.scss";
 import { RequestsList } from "../../components/RequestsList/RequestsList";
 import { RequestsDetails } from "../../components/RequestsDetails/RequestsDetails";
-
+import { RequestModal } from "../../components/RequestModal/RequestModal";
+import { useState } from "react";
 
 export const Requests = () => {
+    const [isOpen, setIsOpen] = useState(false);
+
+    const openModal = () => setIsOpen(true);
+    const closeModal = () => setIsOpen(false);
+
     return (
         <div className="requests__container">
             <span className="requests__header">Входящие обращения</span>
@@ -13,9 +19,10 @@ export const Requests = () => {
                     <RequestsList />
                 </div>
                 <div className="requests__detail">
-                    <RequestsDetails />
+                    <RequestsDetails onCreateRequest={openModal}/>
                 </div> 
             </div>
+            <RequestModal isOpen={isOpen} onClose={closeModal}/>
         </div>
     )
 }
