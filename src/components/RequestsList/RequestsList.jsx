@@ -2,7 +2,7 @@ import "./RequestsList.scss";
 import { RequestCard } from "../RequestCard/RequestCard";
 import { useEffect, useState } from "react";
 
-export const RequestsList = () => {
+export const RequestsList = ({ openRequest }) => {
     const [requests, setRequests] = useState([]);
 
     const fetchData = async () => {
@@ -32,7 +32,9 @@ export const RequestsList = () => {
             </div>
             <div className="requests-list__list">
                 {requests.map((request)=> {
-                    return <RequestCard id={request.id} client={request.client} date={request.date}/>
+                    return <RequestCard id={request.id} client={request.client} date={request.date} onClick={() => {
+                        openRequest(request)
+                    }}/>
                 })}
             </div>
         </div>
