@@ -7,6 +7,7 @@ import { Ticket } from './pages/Ticket/Ticket';
 import { LayoutWithDrawer } from './components/LayoutWithDrawer/LayoutWithDrawer';
 import { BrowserRouter, Route, Routes} from 'react-router-dom';
 import { Requests } from './pages/Requests/Requests';
+import { PrivateRoutes } from './components/ProtectedRoute/ProtectedRoute';
 
 function App() {
 
@@ -16,12 +17,14 @@ function App() {
         <Routes>
           <Route path="/login" element={<LogIn />} />
 
-          <Route path="/" element={<LayoutWithDrawer />}>
-            <Route path="/calendar" element={<Calendar />} />
-            <Route path="/workers" element={<WorkersList />} />
-            <Route path="/worker" element={<Worker />} />
-            <Route path="/ticket" element={<Ticket />} />
-            <Route path="/requests" element={<Requests />} />
+          <Route element={<PrivateRoutes />}>
+            <Route path="/" element={<LayoutWithDrawer />}>
+              <Route path="/calendar" element={<Calendar />} />
+              <Route path="/workers" element={<WorkersList />} />
+              <Route path="/worker/:id" element={<Worker />} />
+              <Route path="/ticket" element={<Ticket />} />
+              <Route path="/requests" element={<Requests />} />
+            </Route>
           </Route>
         </Routes>
       </BrowserRouter>

@@ -1,13 +1,21 @@
 import "./Drawer.scss";
 import logo from "../../assets/logo.svg";
-import user from "../../assets/user.svg";
-import { useEffect } from "react";
+import userImage from "../../assets/user.svg";
+import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 
+const value = {
+  "admin": "Администратор",
+  "dispatcher": "Диспетчер",
+  "engineer": "Инженер"
+}
+
 export const Drawer = () => {
+  const [user, setUser] = useState({});
+
   useEffect(() => {
-    console.log(localStorage.getItem("user"));
-  });
+    setUser(JSON.parse(localStorage.getItem("user")));
+  }, []);
 
   return (
     <div className="drawer__container">
@@ -23,11 +31,11 @@ export const Drawer = () => {
         <NavLink to="/workers" className="drawer__link">Список сотрудников</NavLink>
       </div>
       <div className="drawer__user">
-        <img className="drawer__user__icon" src={user}></img>
+        <img className="drawer__user__icon" src={userImage}></img>
 
         <div className="drawer__user__info">
-          <span className="drawer__user__name">Иванов Иван</span>
-          <span className="drawer__user__post">Диспетчер</span>
+          <span className="drawer__user__name">{user.name} {user.lastname}</span>
+          <span className="drawer__user__post">{value[user.role]}</span>
         </div>
 
         <div className="drawer__user__logout">

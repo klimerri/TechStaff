@@ -33,9 +33,12 @@ export const Login = () => {
         
         const data = await res.json();
         localStorage.setItem('user', JSON.stringify({
-            login: data.login,
+            name: data.name,
+            lastname: data.lastname,
             role: data.role
         }));
+
+        console.log(data);
 
         navigate('/calendar');
     }

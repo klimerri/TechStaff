@@ -1,23 +1,35 @@
 import "./WorkerCard.scss";
+import { NavLink } from "react-router-dom";
 
-export const WorkerCard = () => {
+const valueRole = {
+    "engineer": "Инженер"
+}
+
+const valueActive = {
+    "true": "Работает",
+    "false": "Не работает"
+}
+
+export const WorkerCard = ({id, name, lastname, role, qualification, active, hour, locationName, locationCity, locationStreet, locationHouse}) => {
     return (
-        <div className="worker-card__container">
+        <NavLink to={`/worker/${id}`}>
+            <div className="worker-card__container">
             <div className="worker-card__info">
-                <span className="worker-card__name">Иванов Иван</span>
-                <span className="worker-card__role">Диспетчер</span>
+                <span className="worker-card__name">{name} {lastname}</span>
+                <span className="worker-card__role">{valueRole[role]}</span>
             </div>
 
-            <span className="worker-card__qualification">junior</span>
+            <span className="worker-card__qualification">{qualification}</span>
 
-            <span className="worker-card__active">Работает</span>
+            <span className="worker-card__active">{valueActive[active]}</span>
 
-            <span className="worker-card__hours">40 ч.</span>
+            <span className="worker-card__hours">{hour} ч.</span>
 
             <div className="worker-card__location">
-                <span className="worker-card__location__name">Север</span>
-                <span className="worker-card__location__address">г. Самара, ул. Иванова, д. 14</span>
+                <span className="worker-card__location__name">{locationName}</span>
+                <span className="worker-card__location__address">г. {locationCity}, ул. {locationStreet}, д. {locationHouse}</span>
             </div>
         </div>
+        </NavLink>
     )
 }

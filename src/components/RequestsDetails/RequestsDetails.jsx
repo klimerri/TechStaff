@@ -39,7 +39,11 @@ export const RequestsDetails = ({ onCreateRequest, currentRequest }) => {
 
             <div className="requests-details__ticket">
                 <span className="requests-details__ticket-header">Созданная заявка</span>
-                <span className="requests-details__ticket-text">Не создана</span>
+
+                {currentRequest.task_ids.length > 0 ? currentRequest.task_ids.map((id) => {
+                    return <span className="requests-details__ticket-text">№{id}</span>
+                }) : <span className="requests-details__ticket-text">Не создана</span>}
+                
             </div>
 
             <button className="requests-details__button" onClick={handleCreateRequest}>Создать заявку</button>
