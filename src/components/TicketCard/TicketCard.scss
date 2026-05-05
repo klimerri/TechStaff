@@ -1,0 +1,93 @@
+.ticket-card {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            background-color: #eff0f4;
+            padding: 25px 25px;
+            border-radius: 15px;
+            box-sizing: border-box;
+            align-items: center;
+
+            &__left {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            &__task {
+                font-family: "Ubuntu", sans-serif;
+                font-size: 16px;
+                font-weight: 500;
+                color: #1849dc;
+            }
+
+            &__request {
+                font-family: "Ubuntu", sans-serif;
+                font-size: 16px;
+                font-weight: 400;
+                color: rgb(85, 85, 85);
+            }
+
+            &__header {
+                font-family: "Ubuntu", sans-serif;
+                font-size: 18px;
+                font-weight: 500;
+                color: black;
+            }
+
+            &__right {
+                display: flex;
+                gap: 40px;
+                align-items: center;
+            }
+
+            &__status {
+                background-color: #1849dc;
+                color: white;
+                font-family: "Ubuntu", sans-serif;
+                font-size: 18px;
+                font-weight: 500;
+                height: min-content;
+                padding: 10px 20px;
+                border-radius: 20px;
+            }
+
+            &__prioritet {
+                border: 2px solid red;
+                color: red;
+                font-family: "Ubuntu", sans-serif;
+                font-size: 18px;
+                font-weight: 400;
+                height: min-content;
+                padding: 10px 20px;
+                border-radius: 20px;
+            }
+
+            &__engineer {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+
+                &__header {
+                    font-family: "Ubuntu", sans-serif;
+                    font-size: 16px;
+                    font-weight: 400;
+                    color: rgb(85, 85, 85);
+                }
+
+                &__name {
+                    font-family: "Ubuntu", sans-serif;
+                    font-size: 16px;
+                    font-weight: 500;
+                    color: black;
+                }
+            }
+
+            &__data {
+                font-family: "Ubuntu", sans-serif;
+                    font-size: 18px;
+                    font-weight: 400;
+                    color: black;
+                    height: min-content;
+            }
+        }

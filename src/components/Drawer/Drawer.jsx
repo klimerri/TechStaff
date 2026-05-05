@@ -27,7 +27,7 @@ export const Drawer = () => {
       <div className="drawer__list">
         <NavLink to="/requests" className="drawer__link">Обращения</NavLink>
         <NavLink to="/calendar" className="drawer__link">Календарь</NavLink>
-        <NavLink to="/" className="drawer__link">Статистика</NavLink>
+        <NavLink to="/statistics" className="drawer__link">Статистика</NavLink>
         <NavLink to="/workers" className="drawer__link">Список сотрудников</NavLink>
       </div>
       <div className="drawer__user">

@@ -8,6 +8,7 @@ import { LayoutWithDrawer } from './components/LayoutWithDrawer/LayoutWithDrawer
 import { BrowserRouter, Route, Routes} from 'react-router-dom';
 import { Requests } from './pages/Requests/Requests';
 import { PrivateRoutes } from './components/ProtectedRoute/ProtectedRoute';
+import { Statistics } from './pages/Statistics/Statistics';
 
 function App() {
 
@@ -22,8 +23,9 @@ function App() {
               <Route path="/calendar" element={<Calendar />} />
               <Route path="/workers" element={<WorkersList />} />
               <Route path="/worker/:id" element={<Worker />} />
-              <Route path="/ticket" element={<Ticket />} />
+              <Route path="/ticket/:id" element={<Ticket />} />
               <Route path="/requests" element={<Requests />} />
+              <Route path="/statistics" element={<Statistics />} />
             </Route>
           </Route>
         </Routes>

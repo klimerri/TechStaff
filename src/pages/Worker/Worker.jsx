@@ -11,22 +11,22 @@ export const Worker = () => {
 
     const [request, setRequest] = useState([]);
     
-      const fetchData = async () => {
-              const res = await fetch(`http://127.0.0.1:8000/engineers/${id}`, {
-                  body: JSON.stringify(),
-                  method: "GET",
-                  headers: {
-                      "Content-Type": "application/json"
-                  }
-              });
-      
-              setRequest(await res.json());
-          }
-      
-          useEffect( () => {
-              fetchData();
-          }, []);
-      
+    const fetchData = async () => {
+        const res = await fetch(`http://127.0.0.1:8000/engineers/${id}`, {
+            body: JSON.stringify(),
+            method: "GET",
+            headers: {
+            "Content-Type": "application/json",
+            },
+        });
+
+        setRequest(await res.json());
+    };
+
+    useEffect(() => {
+      fetchData();
+    }, []);
+
     console.log(request);
 
     return (
