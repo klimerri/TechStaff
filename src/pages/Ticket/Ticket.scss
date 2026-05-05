@@ -73,6 +73,13 @@
             font-size: 20px;
             font-weight: 500;
             color: #1849dc; 
+        
+            &--status {
+                padding: 10px 20px;
+                border-radius: 20px;
+                width: fit-content; 
+                color: #fff;
+            }    
         }
     }
 
@@ -145,10 +152,10 @@
         }
 
         &__card-title {
-                font-family: "Ubuntu", sans-serif;
-                font-size: 18px;
-                font-weight: 400;
-                color: black;
+            font-family: "Ubuntu", sans-serif;
+            font-size: 18px;
+            font-weight: 400;
+            color: black;
         }
     }
 

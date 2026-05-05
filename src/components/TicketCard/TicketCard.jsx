@@ -1,6 +1,6 @@
 import "./TicketCard.scss";
 
-const valueStatus = {
+export const valueStatus = {
     new: {
       text: "Новая",
       bgColor: "gray",
@@ -23,7 +23,7 @@ const valueStatus = {
     }
 }
 
-const priorityMap = {
+export const priorityMap = {
     1: {
         text: "Высокий",
         bgColor: "red"

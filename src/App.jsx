@@ -20,12 +20,12 @@ function App() {
 
           <Route element={<PrivateRoutes />}>
             <Route path="/" element={<LayoutWithDrawer />}>
-              <Route path="/calendar" element={<Calendar />} />
-              <Route path="/workers" element={<WorkersList />} />
-              <Route path="/worker/:id" element={<Worker />} />
-              <Route path="/ticket/:id" element={<Ticket />} />
-              <Route path="/requests" element={<Requests />} />
-              <Route path="/statistics" element={<Statistics />} />
+              <Route path="calendar" element={<Calendar />} />
+              <Route path="workers" element={<WorkersList />} />
+              <Route path="worker/:id" element={<Worker />} />
+              <Route path="ticket/:id" element={<Ticket />} />
+              <Route path="requests" element={<Requests />} />
+              <Route path="statistics" element={<Statistics />} />
             </Route>
           </Route>
         </Routes>
