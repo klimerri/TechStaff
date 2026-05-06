@@ -2,8 +2,11 @@ import "./Statistics.scss";
 import { TicketCard } from "../../components/TicketCard/TicketCard";
 import { useState, useEffect} from "react";
 import { NavLink } from "react-router-dom";
+import { useUser } from "../../hooks/useUser";
 
 export const Statistics = () => {
+    const { user, isEngineer } = useUser();
+
     const [tasks, setTasks] = useState([]);
     const [newTasks, setNewTasks] = useState([]);
     const [waitingTasks, setWaitingTasks] = useState([]);
@@ -19,7 +22,11 @@ export const Statistics = () => {
             }
         });
 
-        const data = await res.json();
+        let data = await res.json();
+
+        if (isEngineer) {
+            data = data.filter(task => task?.engineer && task?.engineer?.id_user === user.id);
+        }
 
         const grouped = {
             new: [],
@@ -60,9 +67,18 @@ export const Statistics = () => {
 
     return (
         <div className="statistics__container">
-            <div className="statistics__header">Распределение заявок</div>
+            <div className="statistics__header">
+                {isEngineer ? 'Ваши заявки' : 'Распределение заявок'}
+            </div>
 
-            <button className="statistics__button" onClick={runSchedule}>Запустить алгоритм распределения заявок</button>
+            {!isEngineer && (
+                <button 
+                    className="statistics__button" 
+                    onClick={runSchedule}
+                >
+                    Запустить алгоритм распределения заявок
+                </button>
+            )}
 
             <div className="statistics__information-list">
                 <div className="statistics__information__card">
@@ -98,6 +114,12 @@ export const Statistics = () => {
                         <TicketCard task={task} key={task.id} />
                     </NavLink>
                 ))}
+
+                {tasks.length === 0 && (
+                    <div className="statistics__empty">
+                        <span className="statistics__empty-header">Заявок нет</span>
+                    </div>
+                )}
             </div>
         </div>
     )

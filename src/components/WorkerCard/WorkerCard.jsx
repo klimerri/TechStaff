@@ -10,12 +10,12 @@ const valueActive = {
     "false": "Не работает"
 }
 
-export const WorkerCard = ({id, name, lastname, role, qualification, active, hour, locationName, locationCity, locationStreet, locationHouse}) => {
+export const WorkerCard = ({id, name, surname, lastname, role, qualification, active, hour, locationName, locationCity, locationStreet, locationHouse}) => {
     return (
         <NavLink to={`/worker/${id}`}>
             <div className="worker-card__container">
             <div className="worker-card__info">
-                <span className="worker-card__name">{name} {lastname}</span>
+                <span className="worker-card__name">{surname} {name} {lastname}</span>
                 <span className="worker-card__role">{valueRole[role]}</span>
             </div>
 

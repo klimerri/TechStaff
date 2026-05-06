@@ -15,7 +15,7 @@ export const RequestsList = ({ openRequest }) => {
 
         setRequests(await res.json());
     }
-
+    
     useEffect( () => {
         fetchData();
     }, []);
@@ -26,10 +26,11 @@ export const RequestsList = ({ openRequest }) => {
                 <span className="requests-list__header-name">ID</span>
                 <span className="requests-list__header-client">Клиент</span>
                 <span className="requests-list__header-date">Дата создания</span>
+                <span className="requests-list__header-task">Есть заявки</span>
             </div>
             <div className="requests-list__list">
                 {requests.map((request)=> {
-                    return <RequestCard id={request.id} client={request.client} date={request.date} onClick={() => {
+                    return <RequestCard id={request.id} task={request.task_ids} client={request.client} date={request.date} onClick={() => {
                         openRequest(request)
                     }}/>
                 })}

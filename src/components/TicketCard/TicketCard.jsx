@@ -52,7 +52,8 @@ export const TicketCard = ({ task }) => {
 
                 <span className="ticket-card__header">{task.name}</span>
             </div>
-            <div className="ticket-card__right">
+
+            <div className="ticket-card__center">
                 <span className="ticket-card__status" style={{ backgroundColor: status?.bgColor }}>
                     {status?.text}
                 </span>
@@ -60,7 +61,9 @@ export const TicketCard = ({ task }) => {
                 <span className="ticket-card__prioritet" style={{ borderColor: priority?.bgColor, color: priority?.bgColor }}>
                     {priority?.text}
                 </span>
+            </div>
 
+            <div className="ticket-card__right">
                 <div className="ticket-card__engineer">
                     <span className="ticket-card__engineer__header">
                         Назначен
@@ -69,9 +72,9 @@ export const TicketCard = ({ task }) => {
                         {task.engineer ? task.engineer.user.name + " " + task.engineer.user.surname : "Не назначен"}
                     </span>
                 </div>
-
-                <span className="ticket-card__data">{new Date(task.created_at).toLocaleDateString()}</span>
             </div>
+
+            <span className="ticket-card__data">{new Date(task.created_at).toLocaleDateString()}</span>
         </div>
     );
 }

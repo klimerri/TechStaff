@@ -9,7 +9,7 @@ import { BrowserRouter, Route, Routes} from 'react-router-dom';
 import { Requests } from './pages/Requests/Requests';
 import { PrivateRoutes } from './components/ProtectedRoute/ProtectedRoute';
 import { Statistics } from './pages/Statistics/Statistics';
-import Resource from './Cal';
+import Resource from './components/Calendar/Cal';
 
 function App() {
   return (
@@ -21,7 +21,6 @@ function App() {
           <Route element={<PrivateRoutes />}>
             <Route path="/" element={<LayoutWithDrawer />}>
               <Route path="calendar" element={<Calendar />} />
-              <Route path="calendar-2" element={<Resource />} />
               <Route path="workers" element={<WorkersList />} />
               <Route path="worker/:id" element={<Worker />} />
               <Route path="ticket/:id" element={<Ticket />} />

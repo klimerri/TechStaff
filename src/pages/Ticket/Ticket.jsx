@@ -12,7 +12,6 @@ export const Ticket = () => {
     
     const fetchData = async () => {
         const res = await fetch(`http://127.0.0.1:8000/tasks/${id}`, {
-            body: JSON.stringify(),
             method: "GET",
             headers: {
             "Content-Type": "application/json",
@@ -26,7 +25,29 @@ export const Ticket = () => {
       fetchData();
     }, []);
 
-    console.log(ticket);
+    const handleCancel = async () => {
+        const res = await fetch(`http://127.0.0.1:8000/tasks/${id}/cancel/`, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+        });
+
+        alert("Заявка отменена.");
+        fetchData();
+    }
+
+    const handleComplete = async () => {
+        const res = await fetch(`http://127.0.0.1:8000/tasks/${id}/complete/`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+        });
+
+        alert("Заявка завершена.");
+        fetchData();
+    }
 
     return (
         <div className="ticket__container">
@@ -47,7 +68,12 @@ export const Ticket = () => {
                 <div className="ticket__card">
                     <span className="ticket__card-title">Назначен</span>
                     <span className="ticket__card-text">
-                        {ticket?.engineer ? `${ticket?.engineer.user.name} ${ticket.engineer.user.surname}` : 'Не назначен'}
+                        {!ticket?.engineer && 'Не назначен'}
+                        {ticket?.engineer ? (
+                            <NavLink to={`/worker/${ticket.engineer.id}`}>
+                                {ticket.engineer.user.name} {ticket.engineer.user.surname}
+                            </NavLink>
+                        ) : null}
                     </span>
                 </div>
                 <div className="ticket__card">
@@ -116,10 +142,14 @@ export const Ticket = () => {
                 {ticket?.location?.house}
             </span>
 
-            <div className="ticket__buttons">
-                <button className="ticket__buttons__refuse">Отказаться от заявки</button>
-                <button className="ticket__buttons__end">Завершить заявку</button>
-            </div>
+            {
+                ticket?.status === 'process' ? (
+                    <div className="ticket__buttons">
+                        <button className="ticket__buttons__refuse" onClick={handleCancel}>Отказаться от заявки</button>
+                        <button className="ticket__buttons__end" onClick={handleComplete}>Завершить заявку</button>
+                    </div>
+                ) : null
+            }
         </div>
     );
 };

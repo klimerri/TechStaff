@@ -42,7 +42,6 @@ export const RequestModal = ({ requestId, locationId, isOpen, onClose }) => {
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-        console.log(name, value);
         
         setFormData((prev) => ({ ...prev, [name]: value }));
         
@@ -74,8 +73,6 @@ export const RequestModal = ({ requestId, locationId, isOpen, onClose }) => {
         }
 
         // Отправка заявки (API)
-        console.log("Новая заявка:", formData);
-
         const body = {
             ...formData,
             id_request: requestId,

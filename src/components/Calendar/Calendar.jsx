@@ -5,6 +5,8 @@ import moment from 'moment';
 import * as dates from 'date-arithmetic'
 import { Calendar, momentLocalizer, Views, Navigate, DateLocalizer } from 'react-big-calendar'
 import TimeGrid from 'react-big-calendar/lib/TimeGrid';
+import { NavLink } from 'react-router-dom';
+import 'moment/locale/ru'
 
 function MyWeek({
     date,
@@ -76,57 +78,114 @@ MyWeek.title = (date) => {
     return `${date.toLocaleDateString()}`
 }
 
+export const messages = {
+    today: 'Сегодня',
+    previous: 'Назад',
+    next: 'Вперёд',
+    month: 'Месяц',
+    week: 'Неделя',
+    work_week: 'Рабочая неделя',
+    day: 'День',
+    agenda: 'Повестка',
+    date: 'Дата',
+    time: 'Время',
+    event: 'Событие',
+    noEventsInRange: 'Нет событий',
+}
+
+moment.locale('ru')
+moment.updateLocale('ru', {
+    week: { dow: 1 },
+    longDateFormat: {
+        LT: 'HH:mm',
+        LTS: 'HH:mm:ss',
+    },
+});
+const localizer = momentLocalizer(moment);
+    
 export default function EngineerCalendar({ events }) {
-    useEffect(() => {
-        console.log(events);
-    }, [events]);
-
     const [date, setDate] = useState(new Date())
-
-    moment.updateLocale('en', {
-        week: { dow: 1 },
-        longDateFormat: {
-            LT: 'HH:mm',
-            LTS: 'HH:mm:ss',
-        },
-    });
-    const localizer = momentLocalizer(moment);
     
     const views = useMemo(
         () => ({
-            month: true,
             week: MyWeek,
         }),
         []
     )
 
-
     return (
-        <div className="height600">
-            <Calendar
-                date={date}
-                onNavigate={(newDate) => setDate(newDate)}
-                view={Views.WEEK}
-                onView={() => {}}
-                events={events}
-                localizer={localizer}
-                views={views}
-                components={{
-                    event: EngineerEvent,
-                }}
-            />
-        </div>
+        <Calendar
+            culture='ru'
+            messages={messages}
+            date={date}
+            onNavigate={(newDate) => setDate(newDate)}
+            view={Views.WEEK}
+            onView={() => {}}
+            events={events}
+            localizer={localizer}
+            views={views}
+            components={{
+                event: EngineerEvent,
+                eventWrapper: ({ children, event }) => (
+                    <NavLink
+                        to={`/ticket/${event.id}`}
+                        style={{
+                            display: 'block',
+                            textDecoration: 'none',
+                            color: 'inherit',
+                            height: '100%',
+                            width: '100%',
+                        }}
+                    >
+                        {children}
+                    </NavLink>
+                )
+            }}
+            eventPropGetter={(event) => {
+                let backgroundColor = '#3174ad';
+                let textDecoration = 'none';
+
+                switch (event.status) {
+                    case 'process':
+                        backgroundColor = '#3498db';
+                        break;
+
+                    case 'done':
+                        backgroundColor = '#27ae60';
+                        textDecoration = 'line-through';
+                        break
+
+                    case 'cancelled':
+                        backgroundColor = '#e74c3c';
+                        textDecoration = 'line-through';
+                        break;
+
+                    default:
+                        backgroundColor = '#7f8c8d';
+                }
+
+                return {
+                    style: {
+                        backgroundColor,
+                        textDecoration,
+                        borderRadius: '6px',
+                        border: 'none',
+                        color: '#fff',
+                        padding: '2px 4px',
+                    },
+                }
+            }}
+        />
     )
 }
 EngineerCalendar.propTypes = {
     localizer: PropTypes.instanceOf(DateLocalizer),
 }
 
-const EngineerEvent = ({ event }) => (
-    <>
-        <span>{event.name} </span> <br />
-        {/* <span>{event.engineer.user.name}</span> <br />   */}
-        {/* <span>{event.start_time.toLocaleString()}</span> <br /> */}
-        {/* <span>{event.completion_time.toLocaleString()}</span> */}
-    </>
+export const EngineerEvent = ({ event }) => (
+    <span>
+        {event.name} <br />
+        {event.status === 'cancelled' && '(Отменена)'}
+        {event.status === 'done' && '(Завершена)'}
+    </span> 
 );

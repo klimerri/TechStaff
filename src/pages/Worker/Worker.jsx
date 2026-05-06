@@ -28,8 +28,6 @@ export const Worker = () => {
       fetchData();
     }, []);
 
-    console.log(request);
-
     return (
         <div className="worker-page__container">
             <button className="worker-page__button-back" onClick={() => navigate(-1)}>
