@@ -3,6 +3,8 @@ import { TicketCard } from "../../components/TicketCard/TicketCard";
 import { useState, useEffect} from "react";
 import { NavLink } from "react-router-dom";
 import { useUser } from "../../hooks/useUser";
+import { usePagination } from "../../hooks/usePagination";
+import { Pagination } from "../../components/Pagination/Pagination";
 
 export const Statistics = () => {
     const { user, isEngineer } = useUser();
@@ -13,7 +15,9 @@ export const Statistics = () => {
     const [cancelledTasks, setCancelledTasks] = useState([]);
     const [processTasks, setProcessTasks] = useState([]);
     const [doneTasks, setDoneTasks] = useState([]);
-        
+
+    const { changePage, totalPages, data, currentPage } = usePagination({ perPage: 3, list: tasks });
+    
     const fetchData = async () => {
         const res = await fetch(`http://127.0.0.1:8000/tasks`, {
             method: "GET",
@@ -109,18 +113,20 @@ export const Statistics = () => {
             </div>
 
             <div className="statistics__ticket-list">
-                {tasks.map((task) => (
+                {data.map((task) => (
                     <NavLink to={`/ticket/${task.id}`} key={task.id}>
                         <TicketCard task={task} key={task.id} />
                     </NavLink>
                 ))}
 
-                {tasks.length === 0 && (
+                {data.length === 0 && (
                     <div className="statistics__empty">
                         <span className="statistics__empty-header">Заявок нет</span>
                     </div>
                 )}
             </div>
+
+            <Pagination onPageChange={changePage} totalPages={totalPages} currentPage={currentPage} />
         </div>
     )
 }

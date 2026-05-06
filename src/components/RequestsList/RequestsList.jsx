@@ -1,9 +1,12 @@
 import "./RequestsList.scss";
 import { RequestCard } from "../RequestCard/RequestCard";
 import { useEffect, useState } from "react";
+import { Pagination } from "../Pagination/Pagination";
+import { usePagination } from "../../hooks/usePagination";
 
 export const RequestsList = ({ openRequest }) => {
     const [requests, setRequests] = useState([]);
+    const { changePage, currentPage, totalPages, data } = usePagination({ list: requests });
 
     const fetchData = async () => {
         const res = await fetch("http://127.0.0.1:8000/requests/", {
@@ -29,12 +32,14 @@ export const RequestsList = ({ openRequest }) => {
                 <span className="requests-list__header-task">Есть заявки</span>
             </div>
             <div className="requests-list__list">
-                {requests.map((request)=> {
+                {data.map((request)=> {
                     return <RequestCard id={request.id} task={request.task_ids} client={request.client} date={request.date} onClick={() => {
                         openRequest(request)
                     }}/>
                 })}
             </div>
+
+            <Pagination  currentPage={currentPage} onPageChange={changePage} totalPages={totalPages} />
         </div>
     )
 }
