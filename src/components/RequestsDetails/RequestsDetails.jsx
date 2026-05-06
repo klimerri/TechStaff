@@ -1,4 +1,5 @@
 import "./RequestsDetails.scss";
+import { NavLink } from "react-router-dom";
 
 export const RequestsDetails = ({ onCreateRequest, currentRequest }) => {
     const handleCreateRequest = () => {
@@ -41,7 +42,7 @@ export const RequestsDetails = ({ onCreateRequest, currentRequest }) => {
                 <span className="requests-details__ticket-header">Созданная заявка</span>
 
                 {currentRequest.task_ids.length > 0 ? currentRequest.task_ids.map((id) => {
-                    return <span className="requests-details__ticket-text">№{id}</span>
+                    return <NavLink to={`/ticket/${id}`} className="requests-details__ticket-text--link">№{id}</NavLink>
                 }) : <span className="requests-details__ticket-text">Не создана</span>}
                 
             </div>

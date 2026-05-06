@@ -1,12 +1,18 @@
 .request-card {
     &__container {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: 0.5fr 1.5fr 1fr;
         gap: 10px;
         background-color: #eff0f4;
         padding: 10px 7px;
         border-radius: 5px;
         box-sizing: border-box;
+        cursor: pointer;
+        transition: background-color 0.3s linear;
+
+        &:hover {
+            background-color: #d3d8ee;
+        }
     }
 
     &__name, &__client, &__date {

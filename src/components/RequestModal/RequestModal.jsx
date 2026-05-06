@@ -117,16 +117,15 @@ export const RequestModal = ({ requestId, locationId, isOpen, onClose }) => {
             style={customStyles}
             contentLabel="Создать заявку"
         >
-            <h2>Новая заявка</h2>
+            <h2 style={{ fontWeight: 400, color: "black", fontSize: "18px", textAlign: "center"}}>Новая заявка</h2>
             <form onSubmit={handleSubmit}>
-                <div style={{ marginBottom: "15px" }}>
+                <div style={{ marginTop: "20px", display: "flex", flexDirection: "column", gap: "10px" }}>
                     <label>Название заявки:</label>
                     <input
                         name="name"
                         value={formData.name}
                         onChange={handleChange}
                         style={{
-                            width: "100%",
                             padding: "8px",
                             border: errors.name ? "1px solid red" : "1px solid #ccc",
                             borderRadius: "4px",
@@ -140,14 +139,13 @@ export const RequestModal = ({ requestId, locationId, isOpen, onClose }) => {
                     )}
                 </div>
 
-                <div style={{ marginBottom: "15px" }}>
+                <div style={{ marginTop: "20px", display: "flex", flexDirection: "column", gap: "10px"  }}>
                     <label>Тип заявки:</label>
                     <select
                         name="id_task_type"
                         value={formData.id_task_type}
                         onChange={handleChange}
                         style={{
-                            width: "100%",
                             padding: "8px",
                             border: errors.id_task_type ? "1px solid red" : "1px solid #ccc",
                             borderRadius: "4px",
@@ -166,7 +164,7 @@ export const RequestModal = ({ requestId, locationId, isOpen, onClose }) => {
                     )}
                 </div>
 
-                <div style={{ marginBottom: "15px" }}>
+                <div style={{ marginTop: "20px", display: "flex", flexDirection: "column", gap: "10px"  }}>
                     <label>Описание:</label>
                     <textarea
                         name="text"
@@ -174,7 +172,6 @@ export const RequestModal = ({ requestId, locationId, isOpen, onClose }) => {
                         onChange={handleChange}
                         rows="4"
                         style={{
-                            width: "100%",
                             padding: "8px",
                             border: errors.text ? "1px solid red" : "1px solid #ccc",
                             borderRadius: "4px",
@@ -189,14 +186,13 @@ export const RequestModal = ({ requestId, locationId, isOpen, onClose }) => {
                     )}
                 </div>
 
-                <div style={{ marginBottom: "20px" }}>
+                <div style={{ marginTop: "20px", display: "flex", flexDirection: "column", gap: "10px"  }}>
                     <label>Приоритет:</label>
                     <select
                         name="priority"
                         value={formData.priority}
                         onChange={handleChange}
                         style={{
-                            width: "100%",
                             padding: "8px",
                             border: errors.priority ? "1px solid red" : "1px solid #ccc",
                             borderRadius: "4px",
@@ -215,13 +211,13 @@ export const RequestModal = ({ requestId, locationId, isOpen, onClose }) => {
                     )}
                 </div>
 
-                <div>
+                <div style={{ marginTop: "20px", display: "flex", gap: "10px", justifyContent: "center" }}>
                     <button
                         type="submit"
                         style={{
                             marginRight: "10px",
                             padding: "10px 20px",
-                            background: "#007bff",
+                            background: "#1849dc",
                             color: "white",
                             border: "none",
                             borderRadius: "4px",

@@ -32,13 +32,12 @@ export const WorkersList = () => {
         <div className="workers-list__list">
           <div className="workers-list__list__header">
             <div className="workers-list__list__header__name">
-                <span className="workers-list__list__header-text">ФИО</span>
-                <span className="workers-list__list__header-text">Роль</span>
+                <span className="workers-list__list__header-text">ФИО, роль</span>
             </div>
 
             <span className="workers-list__list__header-text">Квалификация</span>
             <span className="workers-list__list__header-text">Активен</span>
-            <span className="workers-list__list__header-text">Текущая нагрузка</span>
+            <span className="workers-list__list__header-text">Нагрузка</span>
             <span className="workers-list__list__header-text">Локация</span>
           </div>
 

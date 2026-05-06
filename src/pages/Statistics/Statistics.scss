@@ -6,6 +6,24 @@
         padding: 40px 30px;
     }
 
+    &__button {
+        background-color: #1849dc; 
+        font-family:"Ubuntu", sans-serif;
+        font-size: 16px;
+        font-weight: 500;
+        color: white;
+        width: max-content;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 20px;
+        cursor: pointer;
+        transition: background-color 0.3s linear;
+
+        &:hover {
+            background-color: #122f86;
+        }
+    }
+
     &__header {
         font-family: "Ubuntu", sans-serif;
         font-weight: 400;

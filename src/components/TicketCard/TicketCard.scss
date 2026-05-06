@@ -7,6 +7,11 @@
             border-radius: 15px;
             box-sizing: border-box;
             align-items: center;
+            transition: background-color 0.3s linear;
+
+            &:hover {
+                background-color: #d3d8ee;
+            }
 
             &__left {
                 display: flex;

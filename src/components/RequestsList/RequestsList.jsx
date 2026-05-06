@@ -20,8 +20,6 @@ export const RequestsList = ({ openRequest }) => {
         fetchData();
     }, []);
 
-    console.log(requests);
-
     return (
         <div className="requests-list__container">
             <div className="requests-list__header">

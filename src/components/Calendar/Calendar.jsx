@@ -90,8 +90,6 @@ export default function EngineerCalendar({ events }) {
             LTS: 'HH:mm:ss',
         },
     });
-    
-    
     const localizer = momentLocalizer(moment);
     
     const views = useMemo(

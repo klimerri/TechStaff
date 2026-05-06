@@ -1,4 +1,22 @@
 .worker-page {
+    &__button-back {
+        font-family: "Ubuntu", sans-serif;
+        font-size: 16px;
+        font-weight: 400;
+        color: white;
+        background-color: #1849dc;
+        padding: 5px 25px;
+        border-radius: 20px;
+        width: fit-content;
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.3s linear;
+
+        &:hover {
+            background-color: #122f86;
+        }
+    }
+
     &__container {
         display: flex;
         flex-direction: column;
@@ -74,6 +92,7 @@
         &-list {
             display: flex;
             gap: 15px;
+            flex-wrap: wrap;
         }
 
         &-skill {
@@ -84,6 +103,7 @@
             font-family: "Ubuntu", sans-serif;
             font-size: 16px;
             font-weight: 500;
+            width: fit-content;
         }
     }
 

@@ -87,6 +87,18 @@
             font-size: 18px;
             font-weight: 500;
             color: #1849dc; 
+
+            &--link {
+              font-family: "Ubuntu", sans-serif;
+                font-size: 18px;
+                font-weight: 500;
+                color: #1849dc;   
+                transition: color 0.3s linear;
+
+                &:hover {
+                    color: #122f86;
+                }
+            }
         }
     }
 

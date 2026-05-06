@@ -1,5 +1,5 @@
 import "./Worker.scss";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 const valueRole = {
@@ -8,6 +8,7 @@ const valueRole = {
 
 export const Worker = () => {
     const {id} = useParams();
+    const navigate = useNavigate();
 
     const [request, setRequest] = useState([]);
     
@@ -31,6 +32,10 @@ export const Worker = () => {
 
     return (
         <div className="worker-page__container">
+            <button className="worker-page__button-back" onClick={() => navigate(-1)}>
+                Назад
+            </button>
+
             <div className="worker-page__fullname">
                 <span className="worker-page__name">{request?.user?.surname} {request?.user?.name} {request?.user?.lastname}</span>
                 <span className="worker-page__position">Должность: {valueRole[request?.user?.role]}</span>

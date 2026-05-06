@@ -35,8 +35,10 @@ export const Ticket = () => {
             </button>
 
             <div className="ticket__information">
-                <span className="ticket__number">Заявка №{ticket?.id}</span>
-                <span className="ticket__prioritet">Приорет {priorityMap[ticket?.priority]?.text.toLowerCase()}</span>
+                <div className="ticket__information__top">
+                    <span className="ticket__number">Заявка №{ticket?.id}</span>
+                    <span className="ticket__prioritet">Приорет {priorityMap[ticket?.priority]?.text.toLowerCase()}</span>
+                </div>
                 <span className="ticket__title">{ticket?.name}</span>
                 <span className="ticket__type">{ticket?.task_type?.name}</span>
             </div>
@@ -57,6 +59,27 @@ export const Ticket = () => {
                     <span className="ticket__card-text ticket__card-text--status" style={{ backgroundColor: valueStatus[ticket?.status]?.bgColor }}>
                         {valueStatus[ticket?.status]?.text}
                     </span>
+                </div>
+            </div>
+            <div className="ticket__client">
+                <span className="ticket__client-title">Информация о клиенте</span>
+
+                <div className="ticket__client__container">
+                    <div className="ticket__client-name">{ticket?.request?.client?.name}</div>
+                    <div className="ticket__client-list">
+                        <div className="ticket__client-info">
+                            <span className="ticket__client-info__title">Телефон:</span>
+                            <span className="ticket__client-info__value">{ticket?.request?.client?.phone}</span>
+                        </div>
+                        <div className="ticket__client-info">
+                            <span className="ticket__client-info__title">Почта:</span>
+                            <span className="ticket__client-info__value">{ticket?.request?.client?.mail}</span>
+                        </div>
+                        <div className="ticket__client-info">
+                            <span className="ticket__client-info__title">Телеграмм:</span>
+                            <span className="ticket__client-info__value">{ticket?.request?.client?.telegram}</span>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div className="ticket__description">
@@ -92,6 +115,11 @@ export const Ticket = () => {
                 {ticket?.location?.street + ", "}
                 {ticket?.location?.house}
             </span>
+
+            <div className="ticket__buttons">
+                <button className="ticket__buttons__refuse">Отказаться от заявки</button>
+                <button className="ticket__buttons__end">Завершить заявку</button>
+            </div>
         </div>
     );
 };

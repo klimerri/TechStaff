@@ -56,15 +56,13 @@ export const Statistics = () => {
         });
 
         fetchData()
-
-        console.log(await res.json());
     }
 
     return (
         <div className="statistics__container">
             <div className="statistics__header">Распределение заявок</div>
 
-            <button onClick={runSchedule}>Распределить заявки</button>
+            <button className="statistics__button" onClick={runSchedule}>Запустить алгоритм распределения заявок</button>
 
             <div className="statistics__information-list">
                 <div className="statistics__information__card">
@@ -76,11 +74,6 @@ export const Statistics = () => {
                     <span className="statistics__information__card-header">Новые</span>
 
                     <span className="statistics__information__card-value">{newTasks.length}</span>
-                </div>
-                <div className="statistics__information__card">
-                    <span className="statistics__information__card-header">Не были распределены</span>
-
-                    <span className="statistics__information__card-value">{waitingTasks.length}</span>
                 </div>
                 <div className="statistics__information__card">
                     <span className="statistics__information__card-header">Отменены</span>

@@ -2,13 +2,24 @@
     &__container {
         width: 100%;
         display: grid;
-        grid-template-columns: repeat(5, 1fr);
+        grid-template-columns: 1.2fr 0.7fr 0.7fr 0.7fr 1.7fr;
         gap: 10px;
         background-color: #eff0f4;
-        padding: 7px;
+        padding: 10px 15px;
         border-radius: 5px;
         box-sizing: border-box;
         align-items: center;
+        font-family: "Ubuntu", sans-serif;
+        font-weight: 400;
+        font-style: normal;
+        color: black;
+        font-size: 14px;
+        cursor: pointer;
+        transition: background-color 0.3s linear;
+
+        &:hover {
+            background-color: #d3d8ee;
+        }
     }
 
     &__info, &__location {
@@ -20,9 +31,21 @@
     &__qualification {
         height: min-content;
         align-items: center;
+        font-weight: 500;
     }
 
     &__role {
         font-size: 14px;
+        font-family: "Ubuntu", sans-serif;
+    }
+
+    &__name {
+        color: #1849dc;
+        font-weight: 500;
+    }
+
+    &__role {
+        color: rgb(85, 85, 85);
+        font-size: 12px;
     }
 }
