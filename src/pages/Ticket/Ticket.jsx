@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import "./Ticket.scss";
 import { priorityMap, valueStatus } from "../../components/TicketCard/TicketCard";
+import { NavLink } from "react-router-dom";
 
 export const Ticket = () => {
     const {id} = useParams();
@@ -29,7 +30,7 @@ export const Ticket = () => {
 
     return (
         <div className="ticket__container">
-            <button onClick={() => navigate(-1)}>
+            <button className="ticket__button-back" onClick={() => navigate(-1)}>
                 Назад
             </button>
 
@@ -44,12 +45,12 @@ export const Ticket = () => {
                 <div className="ticket__card">
                     <span className="ticket__card-title">Назначен</span>
                     <span className="ticket__card-text">
-                        {ticket?.engineer ? `${ticket?.engineer?.surname} ${ticket?.engineer?.name}` : 'Не назначен'}
+                        {ticket?.engineer ? `${ticket?.engineer.user.name} ${ticket.engineer.user.surname}` : 'Не назначен'}
                     </span>
                 </div>
                 <div className="ticket__card">
                     <span className="ticket__card-title">Обращение</span>
-                    <span className="ticket__card-text">№{ticket?.request?.id}</span>
+                    <NavLink to={`/requests`} className="ticket__card-text--request">№{ticket?.request?.id}</NavLink>
                 </div>
                 <div className="ticket__card">
                     <span className="ticket__card-title">Статус</span>
@@ -73,13 +74,13 @@ export const Ticket = () => {
                     <div className="ticket__time-list__card-start">
                         <span className="ticket__time-list__card-title">Начало работ</span>
                         <span className="ticket__time-list__card-time">
-                            {ticket?.estimated_completion_time ? new Date(ticket?.estimated_completion_time).toLocaleDateString() : "Отсутствует"}
+                            {ticket?.start_time ? new Date(ticket?.start_time).toLocaleString() : "Отсутствует"}
                         </span>
                     </div>
                     <div className="ticket__time-list__card-end">
                         <span className="ticket__time-list__card-title">Окончание работ</span>
                         <span className="ticket__time-list__card-time">
-                            {ticket?.actual_completion_time ? new Date(ticket?.actual_completion_time).toLocaleDateString() : "Отсутствует"}
+                            {ticket?.completion_time ? new Date(ticket?.completion_time).toLocaleString() : "Отсутствует"}
                         </span>
                     </div>
                 </div>

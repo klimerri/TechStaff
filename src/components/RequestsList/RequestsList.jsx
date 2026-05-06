@@ -7,7 +7,6 @@ export const RequestsList = ({ openRequest }) => {
 
     const fetchData = async () => {
         const res = await fetch("http://127.0.0.1:8000/requests/", {
-            body: JSON.stringify(),
             method: "GET",
             headers: {
                 "Content-Type": "application/json"

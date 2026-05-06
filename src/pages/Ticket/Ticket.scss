@@ -5,10 +5,29 @@
         padding: 40px 30px;
     }
 
+    &__button-back {
+        font-family: "Ubuntu", sans-serif;
+        font-size: 16px;
+        font-weight: 400;
+        color: white;
+        background-color: #1849dc;
+        padding: 5px 25px;
+        border-radius: 20px;
+        width: fit-content;
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.3s linear;
+
+        &:hover {
+            background-color: #122f86;
+        }
+    }
+
     &__information {
         display: flex;
         flex-direction: column;
-        gap: 10px;
+        gap: 15px;
+        margin-top: 25px;
     }
 
     &__number {
@@ -69,17 +88,29 @@
         }
 
         &-text {
-           font-family: "Ubuntu", sans-serif;
+            font-family: "Ubuntu", sans-serif;
             font-size: 20px;
             font-weight: 500;
             color: #1849dc; 
         
             &--status {
-                padding: 10px 20px;
+                padding: 5px 25px;
                 border-radius: 20px;
                 width: fit-content; 
                 color: #fff;
-            }    
+            }
+            
+            &--request {
+                font-family: "Ubuntu", sans-serif;
+                font-size: 20px;
+                font-weight: 500;
+                color: #1849dc; 
+                transition: color 0.3s linear;
+
+                &:hover {
+                    color: #122f86;
+                }
+            }
         }
     }
 

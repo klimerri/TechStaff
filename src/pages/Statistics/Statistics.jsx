@@ -13,7 +13,6 @@ export const Statistics = () => {
         
     const fetchData = async () => {
         const res = await fetch(`http://127.0.0.1:8000/tasks`, {
-            body: JSON.stringify(),
             method: "GET",
             headers: {
                 "Content-Type": "application/json"
@@ -48,11 +47,24 @@ export const Statistics = () => {
         fetchData();
     }, []);
     
-    console.log(tasks);
+    const runSchedule = async () => {
+        const res = await fetch(`http://127.0.0.1:8000/tasks/plan`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        });
+
+        fetchData()
+
+        console.log(await res.json());
+    }
 
     return (
         <div className="statistics__container">
             <div className="statistics__header">Распределение заявок</div>
+
+            <button onClick={runSchedule}>Распределить заявки</button>
 
             <div className="statistics__information-list">
                 <div className="statistics__information__card">

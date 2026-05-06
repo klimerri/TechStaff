@@ -66,7 +66,7 @@ export const TicketCard = ({ task }) => {
                         Назначен
                     </span>
                     <span className="ticket-card__engineer__name">
-                        {task.engineer ? task.engineer.name + " " + task.engineer.surname : "Не назначен"}
+                        {task.engineer ? task.engineer.user.name + " " + task.engineer.user.surname : "Не назначен"}
                     </span>
                 </div>
 

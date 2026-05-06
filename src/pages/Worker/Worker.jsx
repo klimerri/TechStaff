@@ -64,17 +64,19 @@ export const Worker = () => {
             <div className="worker-page__tasks">
                 <span className="worker-page__tasks-title">Ближайшие задачи сотрудника</span>
 
-                {request?.tasks?.length === 0 ? <span>У сотрудника нет активных задач</span> : 
-                request?.tasks?.map((task) => {
-                    <div className="worker-page__task">
-                        <span className="worker-page__task-title">Тест</span>
+                {request?.tasks?.length === 0 && <span>У сотрудника нет активных задач</span>}
+                {request?.tasks?.length ? request.tasks.map((task) => {
+                    return (
+                        <div className="worker-page__task">
+                            <span className="worker-page__task-title">{task.name}</span>
 
-                        <div className="worker-page__task-time">
-                            <span className="worker-page__task-start">Начало:</span>
-                            <span className="worker_page__task-end">Конец:</span>
+                            <div className="worker-page__task-time">
+                                <span className="worker-page__task-start">Начало: {new Date(task.start_time).toLocaleString()}</span>
+                                <span className="worker_page__task-end">Конец: {new Date(task.completion_time).toLocaleString()}</span>
+                            </div>
                         </div>
-                    </div>
-                })}
+                    )
+                }) : null}
             </div>
         </div>
     );

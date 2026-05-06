@@ -23,7 +23,7 @@ export const Requests = () => {
                     <RequestsDetails onCreateRequest={openModal} currentRequest={currentRequest}/>
                 </div> 
             </div>
-            <RequestModal isOpen={isOpen} onClose={closeModal}/>
+            <RequestModal requestId={currentRequest?.id} locationId={currentRequest?.client?.id_location} isOpen={isOpen} onClose={closeModal}/>
         </div>
     )
 }
