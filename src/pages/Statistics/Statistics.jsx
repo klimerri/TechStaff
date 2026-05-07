@@ -10,15 +10,17 @@ export const Statistics = () => {
     const { user, isEngineer } = useUser();
 
     const [tasks, setTasks] = useState([]);
+    const [allTasks, setAllTasks] = useState([]);
     const [newTasks, setNewTasks] = useState([]);
     const [waitingTasks, setWaitingTasks] = useState([]);
     const [cancelledTasks, setCancelledTasks] = useState([]);
     const [processTasks, setProcessTasks] = useState([]);
     const [doneTasks, setDoneTasks] = useState([]);
+    const [statusFilter, setStatusFilter] = useState();
 
-    const { changePage, totalPages, data, currentPage } = usePagination({ perPage: 3, list: tasks });
+    const { changePage, totalPages, data, currentPage } = usePagination({ perPage: 5, list: tasks });
     
-    const fetchData = async () => {
+    const fetchData = async (group = true) => {
         const res = await fetch(`http://127.0.0.1:8000/tasks`, {
             method: "GET",
             headers: {
@@ -32,7 +34,17 @@ export const Statistics = () => {
             data = data.filter(task => task?.engineer && task?.engineer?.id_user === user.id);
         }
 
+        if (statusFilter) {
+            data = data.filter(task => task.status === statusFilter);   
+        }
+
+        if (!group) {
+            setTasks(data);
+            return;
+        }
+
         const grouped = {
+            all: [],
             new: [],
             waiting: [],
             process: [],
@@ -44,9 +56,12 @@ export const Statistics = () => {
             if (grouped[task.status]) {
                 grouped[task.status].push(task);
             }
+
+            grouped.all.push(task);
         });
 
         setTasks(data);
+        setAllTasks(grouped.all);
         setNewTasks(grouped.new);
         setWaitingTasks(grouped.waiting);
         setProcessTasks(grouped.process);
@@ -57,6 +72,10 @@ export const Statistics = () => {
     useEffect( () => {
         fetchData();
     }, []);
+
+    useEffect(() => {
+        fetchData(false);
+    }, [statusFilter]);
     
     const runSchedule = async () => {
         const res = await fetch(`http://127.0.0.1:8000/tasks/plan`, {
@@ -85,27 +104,27 @@ export const Statistics = () => {
             )}
 
             <div className="statistics__information-list">
-                <div className="statistics__information__card">
+                <div className={`statistics__information__card${!statusFilter ? ' checked' : ''}`} onClick={() => setStatusFilter(null)}>
                     <span className="statistics__information__card-header">Всего</span>
 
-                    <span className="statistics__information__card-value">{tasks.length}</span>
+                    <span className="statistics__information__card-value">{allTasks.length}</span>
                 </div>
-                <div className="statistics__information__card">
+                <div className={`statistics__information__card${statusFilter === 'new' ? ' checked' : ''}`} onClick={() => setStatusFilter('new')}>
                     <span className="statistics__information__card-header">Новые</span>
 
                     <span className="statistics__information__card-value">{newTasks.length}</span>
                 </div>
-                <div className="statistics__information__card">
+                <div className={`statistics__information__card${statusFilter === 'cancelled' ? ' checked' : ''}`} onClick={() => setStatusFilter('cancelled')}>
                     <span className="statistics__information__card-header">Отменены</span>
 
                     <span className="statistics__information__card-value">{cancelledTasks.length}</span>
                 </div>
-                <div className="statistics__information__card">
+                <div className={`statistics__information__card${statusFilter === 'process' ? ' checked' : ''}`} onClick={() => setStatusFilter('process')}>
                     <span className="statistics__information__card-header">В работе</span>
 
                     <span className="statistics__information__card-value">{processTasks.length}</span>
                 </div>
-                <div className="statistics__information__card">
+                <div className={`statistics__information__card${statusFilter === 'done' ? ' checked' : ''}`} onClick={() => setStatusFilter('done')}>
                     <span className="statistics__information__card-header">Выполнено</span>
 
                     <span className="statistics__information__card-value">{doneTasks.length}</span>

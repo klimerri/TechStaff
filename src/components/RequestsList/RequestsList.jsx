@@ -4,9 +4,9 @@ import { useEffect, useState } from "react";
 import { Pagination } from "../Pagination/Pagination";
 import { usePagination } from "../../hooks/usePagination";
 
-export const RequestsList = ({ openRequest }) => {
+export const RequestsList = ({ withoutTasks, clientSearch, openRequest }) => {
     const [requests, setRequests] = useState([]);
-    const { changePage, currentPage, totalPages, data } = usePagination({ list: requests });
+    const { changePage, currentPage, totalPages, data } = usePagination({ perPage: 10, list: requests });
 
     const fetchData = async () => {
         const res = await fetch("http://127.0.0.1:8000/requests/", {
@@ -16,12 +16,27 @@ export const RequestsList = ({ openRequest }) => {
             }
         });
 
-        setRequests(await res.json());
+        let data = await res.json();
+        console.log(data);
+        
+        if (withoutTasks) {
+            data = data.filter((req) => !req.task_ids.length);
+        }
+
+        if (clientSearch && clientSearch.trim()) {
+            data = data.filter((task) =>
+                task.client.name
+                    .toLowerCase()
+                    .includes(clientSearch.toLowerCase())
+            );
+        }
+
+        setRequests(data);
     }
     
     useEffect( () => {
         fetchData();
-    }, []);
+    }, [withoutTasks, clientSearch]);
 
     return (
         <div className="requests-list__container">

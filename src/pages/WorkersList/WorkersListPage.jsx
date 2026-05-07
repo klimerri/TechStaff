@@ -4,9 +4,11 @@ import { WorkerCard } from "../../components/WorkerCard/WorkerCard";
 import { useEffect, useState } from "react";
 import { usePagination } from "../../hooks/usePagination";
 import { Pagination } from "../../components/Pagination/Pagination";
+import { Input } from "../../components/Input/Input";
 
 export const WorkersList = () => {
     const [requests, setRequests] = useState([]);
+    const [value, setValue] = useState("");
     const { changePage, totalPages, data, currentPage } = usePagination({ perPage: 8, list: requests });
 
     const fetchData = async () => {
@@ -18,17 +20,41 @@ export const WorkersList = () => {
             }
         });
 
-        setRequests(await res.json());
+        let data = await res.json();
+
+        if (value && value.trim()) {
+            const normalizedSearch = value.toLowerCase();
+
+            data =  data.filter((engineer) => {
+                const fullName = `
+                    ${engineer.user.surname} ${engineer.user.name} ${engineer.user.lastname}
+                `.toLowerCase().replace(/\s+/g, " ").trim();
+
+                return fullName.includes(normalizedSearch);
+            });
+        }
+        
+        setRequests(data);
     }
 
     useEffect(() => {
         fetchData();
-    }, []);
+    }, [value]);
 
 
     return (
         <div className="workers-list__container">
             <span className="workers-list__header">Список сотрудников</span>
+
+            <div style={{marginTop: '20px', width: '300px'}}>
+                <Input
+                    label=""
+                    placeholder="Поиск сотрудника по ФИО"
+                    value={value}
+                    onChange={(e) => setValue(e.target.value)}
+                />
+            </div>
+            
 
             <div className="workers-list__list">
                 <div className="workers-list__list__header">

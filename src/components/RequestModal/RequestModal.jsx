@@ -101,7 +101,10 @@ export const RequestModal = ({ requestId, locationId, isOpen, onClose }) => {
                 }
             });
 
-            setTaskTypes(await res.json());
+            setTaskTypes([
+                { value: "", name: "Выберите тип заявки" },
+                ...(await res.json())
+            ]);
         }
 
         fetchData();
