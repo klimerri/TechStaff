@@ -1,5 +1,5 @@
 import "./Worker.scss";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams, NavLink } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 const valueRole = {
@@ -70,14 +70,14 @@ export const Worker = () => {
                 {request?.tasks?.length === 0 && <span>У сотрудника нет активных задач</span>}
                 {request?.tasks?.length ? request.tasks.map((task) => {
                     return (
-                        <div className="worker-page__task">
+                        <NavLink to={`/ticket/${task.id}`} className="worker-page__task">
                             <span className="worker-page__task-title">{task.name}</span>
 
                             <div className="worker-page__task-time">
                                 <span className="worker-page__task-start">Начало: {new Date(task.start_time).toLocaleString()}</span>
                                 <span className="worker_page__task-end">Конец: {new Date(task.completion_time).toLocaleString()}</span>
                             </div>
-                        </div>
+                        </NavLink>
                     )
                 }) : null}
             </div>

@@ -88,6 +88,7 @@ export const RequestModal = ({ requestId, locationId, isOpen, onClose }) => {
         });
 
         onClose();
+        alert("Заявка создана!");
         // reset form
         setFormData({ name: "", id_task_type: "", text: "", priority: "" });
     };

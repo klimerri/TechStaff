@@ -85,7 +85,9 @@ export const Statistics = () => {
             }
         });
 
-        fetchData()
+        alert("Алгоритм завершил работу!");
+
+        fetchData();
     }
 
     return (

@@ -135,6 +135,12 @@
         border-radius: 15px;
         background-color: #eff0f4;
         box-sizing: border-box;
+        cursor: pointer;
+        transition: background-color 0.3s linear;
+
+            &:hover {
+                background-color: #d3d8ee;
+            }
 
         &-title, &-start, &-end {
             font-family: "Ubuntu", sans-serif;
