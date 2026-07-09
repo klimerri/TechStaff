@@ -91,6 +91,7 @@ export const RequestModal = ({ requestId, locationId, isOpen, onClose }) => {
         alert("Заявка создана!");
         // reset form
         setFormData({ name: "", id_task_type: "", text: "", priority: "" });
+        window.location.reload();
     };
 
     useEffect(() => {

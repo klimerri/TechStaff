@@ -38,7 +38,7 @@ export const Drawer = () => {
                     <img className="drawer__user__icon" src={userImage}></img>
 
                     <div className="drawer__user__info">
-                        <span className="drawer__user__name">{user.name} {user.lastname}</span>
+                        <span className="drawer__user__name">{user.name} {user.surname}</span>
                         <span className="drawer__user__post">{value[user.role]}</span>
                     </div>
 
